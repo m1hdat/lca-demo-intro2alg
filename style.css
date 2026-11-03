@@ -1,0 +1,12 @@
+.btn{color:#fff;padding:.5rem .9rem;border-radius:.5rem;font-size:.875rem;font-weight:600;transition:background .15s}
+.tab{padding:.4rem .7rem;border-radius:.5rem;font-size:.8rem;font-weight:600;background:#e2e8f0}
+.tab.on{background:#4f46e5;color:#fff}
+.dot{display:inline-block;width:.8rem;height:.8rem;border-radius:50%;margin-right:.25rem;vertical-align:middle}
+.edge{stroke:#94a3b8;stroke-width:2.5;transition:stroke .3s}
+.edge.hot{stroke:#10b981;stroke-width:4}
+.node{cursor:pointer;stroke:#334155;stroke-width:2;fill:#fff;transition:fill .3s}
+.nlab{font:600 15px sans-serif;pointer-events:none;text-anchor:middle;dominant-baseline:central}
+.dlab{font:11px sans-serif;fill:#64748b;text-anchor:middle}
+td,th{border:1px solid #cbd5e1;padding:.2rem .5rem;text-align:center;min-width:1.8rem}
+th{background:#f1f5f9}
+.h1{background:#fcd34d;font-weight:700}.h2{background:#bae6fd}.h3{background:#fda4af;font-weight:700}

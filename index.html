@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo thuật toán LCA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+<header class="px-6 py-4 bg-slate-900 text-white">
+  <h1 class="text-xl font-bold">Lowest Common Ancestor – 3 thuật toán trực quan</h1>
+  <p class="text-sm text-slate-300">Dùng cây mẫu hoặc tự nhập cây của bạn. Chọn u, v bằng dropdown hoặc click trực tiếp lên cây.</p>
+</header>
+<main class="grid lg:grid-cols-2 gap-4 p-4">
+  <!-- Bên trái: Visualizer -->
+  <section class="bg-white rounded-xl shadow p-4">
+    <svg id="tree" viewBox="0 0 780 400" class="w-full"></svg>
+    <div class="flex flex-wrap gap-3 text-xs my-2">
+      <span><i class="dot bg-blue-500"></i>u</span><span><i class="dot bg-orange-500"></i>v</span>
+      <span><i class="dot bg-emerald-400"></i>node đã đi qua</span><span><i class="dot bg-yellow-300 ring-2 ring-slate-800"></i>vị trí hiện tại</span>
+      <span><i class="dot bg-rose-500"></i>LCA</span>
+    </div>
+    <div id="caption" class="min-h-[3.5rem] p-3 rounded-lg bg-slate-100 text-sm">Chọn thuật toán, u, v rồi bấm “Bước tiếp theo” hoặc “Chạy tự động”.</div>
+    <div class="flex flex-wrap gap-2 mt-3">
+      <button id="btnAuto" class="btn bg-indigo-600 hover:bg-indigo-700">Chạy tự động (Animate)</button>
+      <button id="btnNext" class="btn bg-emerald-600 hover:bg-emerald-700">Bước tiếp theo (Next Step)</button>
+      <button id="btnReset" class="btn bg-slate-500 hover:bg-slate-600">Đặt lại (Reset)</button>
+    </div>
+  </section>
+  <!-- Bên phải: điều khiển, log, bảng -->
+  <section class="bg-white rounded-xl shadow p-4 space-y-3">
+    <div class="border rounded-lg p-3 bg-slate-50 space-y-2">
+      <p class="text-sm font-semibold">Cây của bạn (nhập danh sách cạnh, node đánh số 1..n, tối đa 30)</p>
+      <textarea id="edgeInp" rows="4" class="w-full border rounded p-2 font-mono text-xs" placeholder="1-2, 1-3, 2-4 ..."></textarea>
+      <div class="flex flex-wrap items-center gap-2 text-sm">
+        <label>Gốc <input id="rootInp" type="number" min="1" value="1" class="border rounded w-16 px-2 py-1"></label>
+        <button id="btnApply" class="btn bg-indigo-600 hover:bg-indigo-700">Áp dụng cây</button>
+        <button id="btnSample" class="btn bg-slate-500 hover:bg-slate-600">Cây mẫu</button>
+      </div>
+      <p id="err" class="text-xs text-rose-600"></p>
+    </div>
+    <div class="flex gap-2" id="tabs">
+      <button data-a="1" class="tab">1. Duyệt cha O(n)</button>
+      <button data-a="2" class="tab">2. Binary Lifting O(log n)</button>
+      <button data-a="3" class="tab">3. Euler + Sparse O(1)</button>
+    </div>
+    <div class="flex gap-4 items-center text-sm">
+      <label>u <select id="selU" class="border rounded px-2 py-1"></select></label>
+      <label>v <select id="selV" class="border rounded px-2 py-1"></select></label>
+      <span class="ml-auto">Số phép toán: <b id="ops">0</b></span>
+      <span>LCA: <b id="res" class="text-rose-600">?</b></span>
+    </div>
+    <div id="log" class="h-40 overflow-y-auto border rounded p-2 text-sm space-y-1 bg-slate-50"></div>
+    <button id="btnTbl" class="btn bg-slate-700 hover:bg-slate-800 hidden">Xem Bảng Euler Tour &amp; Sparse Table</button>
+    <div id="tables" class="overflow-x-auto text-xs"></div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
